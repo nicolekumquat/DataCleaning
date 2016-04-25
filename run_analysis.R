@@ -5,6 +5,7 @@ library(dplyr)
 # This script assumes you have downloaded the data from
 # "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
 # and unzipped it into a folder called "UCI HAR Dataset" in your current working directory.
+# NOTE the file paths in this script assume you are running this from a windows machine.
 
 # 1. Merge the training and the test sets for the feature data (x) to create one feature data set.
 testx_raw <- read.csv("UCI HAR Dataset\\test\\x_test.txt", sep="", header = FALSE)
