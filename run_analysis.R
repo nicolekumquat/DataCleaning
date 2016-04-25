@@ -4,18 +4,18 @@ library(dplyr)
 
 # This script assumes you have downloaded the data from
 # "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
-# and unzipped it into a folder called "UCI HAR Dataset" in your current working directory.
-# NOTE the file paths in this script assume you are running this from a windows machine.
+# unzipped it, and copied all the files in the subdirectories into your current working directory.
+
 
 # 1. Merge the training and the test sets for the feature data (x) to create one feature data set.
-testx_raw <- read.csv("UCI HAR Dataset\\test\\x_test.txt", sep="", header = FALSE)
-trainx_raw <- read.csv("UCI HAR Dataset\\train\\x_train.txt", sep="", header = FALSE)
+testx_raw <- read.csv("x_test.txt", sep="", header = FALSE)
+trainx_raw <- read.csv("x_train.txt", sep="", header = FALSE)
 testx <- tbl_df(testx_raw)
 trainx <- tbl_df(trainx_raw)
 data <- bind_rows(testx, trainx)
 
 # Read in the feature names
-features <- read.csv("UCI HAR Dataset\\features.txt", sep="", header = FALSE)
+features <- read.csv("features.txt", sep="", header = FALSE)
 features$V2 <- as.character(features$V2)
 
 # Remove special characters in the feature names:
@@ -32,20 +32,20 @@ subset_data <- data[,cols]
 
 # Now it's time to add the data labels (y):
 # Read in the labels (y), combining test & train rows as before.
-testy_raw <- read.csv("UCI HAR Dataset\\test\\y_test.txt", sep="", header = FALSE)
-trainy_raw <- read.csv("UCI HAR Dataset\\train\\y_train.txt", sep="", header = FALSE)
+testy_raw <- read.csv("y_test.txt", sep="", header = FALSE)
+trainy_raw <- read.csv("y_train.txt", sep="", header = FALSE)
 testy <- tbl_df(testy_raw)
 trainy <- tbl_df(trainy_raw)
 datay <- bind_rows(testy, trainy)
 
 # Use descriptive activity names to name the activities in the label data set:
-activities <- read.csv("UCI HAR Dataset\\activity_labels.txt", sep="", header = FALSE)
+activities <- read.csv("activity_labels.txt", sep="", header = FALSE)
 activities$V2 <- gsub("_", "", activities$V2)
 datay <- mutate(datay, Activity = activities$V2[datay$V1])
 
 # Now read the subject (joining test & training data)
-subjecttest_raw <- read.csv("UCI HAR Dataset\\test\\subject_test.txt", sep="", header = FALSE)
-subjecttrain_raw <- read.csv("UCI HAR Dataset\\train\\subject_train.txt", sep="", header = FALSE)
+subjecttest_raw <- read.csv("subject_test.txt", sep="", header = FALSE)
+subjecttrain_raw <- read.csv("subject_train.txt", sep="", header = FALSE)
 subjecttest <- tbl_df(subjecttest_raw)
 subjecttrain <- tbl_df(subjecttrain_raw)
 subject <- bind_rows(subjecttest, subjecttrain)
@@ -64,7 +64,7 @@ dataColumns <- grep("mean|std", colnames(subset_data), value = TRUE)
 res = ddply(subset_data, groupColumns, function(x) colMeans(x[dataColumns]))
 
 # Write the results to a file.
-write.csv(res, file="Mean_By_Activity_and_Subject.csv")
+write.table(res, file="Mean_By_Activity_and_Subject.txt")
 
 # Write out the names of the columns:
 c <- colnames(subset_data)

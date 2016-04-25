@@ -14,7 +14,7 @@ The script "run_analysis.R" does the following:
 * Adds the Subject id (as the column named "Subject") to this dataset.
 * Adds the Activity (as the column names "Activity") to this dataset.
 * Performs a mean on each column, aggregated by Activity and Subject.
-* Saves this table of means to a file named "Mean_By_Activity_and_Subject.csv"
+* Saves this table of means to a file named "Mean_By_Activity_and_Subject.txt"
 
 The result is a table with the columns, Activity, Subject, and all the original features containing "mean" or "std". 
 The full list of columns is written out to the file "Mean_Features.csv"
