@@ -25,6 +25,8 @@ The resultant table has 180 observations of 81 variables
 
 The result is a table with the columns, Activity, Subject, and all the original features containing "mean" or "std". 
 The full list of columns is written out to the file "Mean_Features.csv"
+
+
 `Activity`
 `Subject`
 `tBodyAccmeanX`
