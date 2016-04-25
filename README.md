@@ -8,6 +8,7 @@ You can learn more about this data set here:
 _http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones_
 
 This project consists of 
+
 1. a ReadMe (this file)
 2. a script which performs analysis on the data to provide the mean of several measurements for each test subject & each activity performed by the subject (run_analysis.R)
 3. a file which explains the generated data (CodeBook.md)
