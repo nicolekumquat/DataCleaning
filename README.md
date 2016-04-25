@@ -1,5 +1,5 @@
 # DataCleaning
-Data Cleaning Project for John Hopkin's class 02 in Data Scientists Toolbox
+Data Cleaning Project for John Hopkin's class 03 in Data Scientists Toolbox
 
 The R script provided in this project performs data cleaning on the data set:
 _https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip_
